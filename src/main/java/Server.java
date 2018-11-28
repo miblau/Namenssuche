@@ -7,24 +7,18 @@ public class Server implements Namenssuche {
     }
 
 
-    public String[] sucheVornamen(String[] nachnamen) {
+    public String[] sucheVornamen(String[] nachnamen){
         String[] vornamen = nachnamen;
 
         File file = new File(Konstanten.DATEINAME_NAMENSLISTE);
-        try {
-            System.out.println(file.getCanonicalPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-
-        FileReader fr = null;
+        FileReader fileReader = null;
         try {
-            fr = new FileReader(Konstanten.DATEINAME_NAMENSLISTE);
+            fileReader = new FileReader(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        BufferedReader reader = new BufferedReader(fr);
+        BufferedReader reader = new BufferedReader(fileReader);
 
         String zeile = null;
         try {
