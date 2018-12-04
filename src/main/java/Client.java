@@ -18,7 +18,7 @@ public class Client {
                 s[i] = s[i].toLowerCase().trim();
             }
 
-            stub.sucheVornamen(s); //TODO: Was passiert bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
+            System.out.println(stub.sucheVornamen(s)); //TODO: Was passiert bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
         }catch (IOException e){
             e.printStackTrace();
         }
