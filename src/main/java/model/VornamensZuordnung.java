@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * @author Michelle Blau
  */
 
-public class VornamensZuordnung {
+public class VornamensZuordnung implements Serializable {
     private String nachname;
     private ArrayList<String> vornamen;
 
