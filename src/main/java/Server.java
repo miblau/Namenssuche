@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class Server implements Namenssuche {
 
     private static final int ANZAHL_NACHNAMEN = 10;
-    private static final int ANZAHL_VORNAMEN = 10;
+    private static final int ANZAHL_VORNAMENSZUORDNUNGEN = 50;
 
     HashMap<String, ArrayList<String>> namensHashMap = new HashMap<String, ArrayList<String>>();
 
@@ -30,26 +30,20 @@ public class Server implements Namenssuche {
      * @return
      */
     @Override
-    public VornamensZuordnung[] sucheVornamen(String[] nachnamen){
+    public ArrayList<VornamensZuordnung> sucheVornamen(String[] nachnamen){
         ServerValidator.pruefeAnzahlNachnamen(nachnamen.length <= ANZAHL_NACHNAMEN);
+        konvertiereInKleinbuchstaben(nachnamen);
 
-        VornamensZuordnung[] vornamensZuordnungen = new VornamensZuordnung[ANZAHL_VORNAMEN];
-        for(int i = 0; i < ANZAHL_VORNAMEN; i++){
-            vornamensZuordnungen[i] = new VornamensZuordnung();
-        }
-
+        ArrayList<VornamensZuordnung> vornamensZuordnungen = new ArrayList<VornamensZuordnung>();
 
         for(int i = 0; i < nachnamen.length; i++){
-            String[] array = new String[ANZAHL_VORNAMEN];
             ArrayList<String> passendeVornamen = namensHashMap.get(nachnamen[i]);
-            vornamensZuordnungen[i].setNachname(nachnamen[i]);
-            vornamensZuordnungen[i].setVornamen(passendeVornamen.toArray(array));
-        }
+            VornamensZuordnung einzelZuordnung = new VornamensZuordnung(nachnamen[i], passendeVornamen);
 
+            vornamensZuordnungen.add(einzelZuordnung);
+        }
         return vornamensZuordnungen;
     }
-
-
 
 
 
@@ -83,5 +77,12 @@ public class Server implements Namenssuche {
         }
 
         scanner.close();
+    }
+
+
+    private void konvertiereInKleinbuchstaben(String[] nachnamen){
+        for(int i = 0; i < nachnamen.length; i++){
+            nachnamen[i] = nachnamen[i].toLowerCase().trim();
+        }
     }
 }
