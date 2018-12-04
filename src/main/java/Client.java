@@ -1,6 +1,9 @@
+import model.VornamensZuordnung;
+
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 
 public class Client {
 
@@ -13,12 +16,13 @@ public class Client {
             System.out.println("Hallo Verteilte Systeme!");
 
             String[] s = {"pOtter", "WeAslEy", "GrangER", "Granger         "};
+            //TODO: Was passiert bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
+            ArrayList<VornamensZuordnung> ergebnis = stub.sucheVornamen(s);
 
-            for (int i = 0; i < s.length; i++) {
-                s[i] = s[i].toLowerCase().trim();
+            for(VornamensZuordnung vz : ergebnis){
+                System.out.println(vz);
             }
 
-            stub.sucheVornamen(s); //TODO: Was passiert bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
         }catch (IOException e){
             e.printStackTrace();
         }
