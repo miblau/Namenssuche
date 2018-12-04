@@ -9,7 +9,8 @@ public class Launcher {
            Server server = new Server();
            Namenssuche stub = (Namenssuche) UnicastRemoteObject.exportObject(server, 0);
 
-           Registry registry = LocateRegistry.getRegistry();
+           LocateRegistry.createRegistry(42424);
+           Registry registry = LocateRegistry.getRegistry(42424);
            registry.bind("Namenssuche", stub);
 
        }catch(Exception e){

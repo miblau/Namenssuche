@@ -28,7 +28,7 @@ public class Client {
         String host = (args.length < 1) ? null:args[0];
         try {
             Registry registry =
-                    LocateRegistry.getRegistry(host);
+                    LocateRegistry.getRegistry(host, 42424);
             Namenssuche stub = (Namenssuche) registry.lookup("Namenssuche");
 
             Client client = new Client();
