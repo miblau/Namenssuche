@@ -11,10 +11,11 @@ public class Testen {
         Server server = new Server();
 
         String[] s = {"pOtter", "WeAslEy", "GrangER", "Granger         "};
+
         for(int i = 0; i < s.length; i++){
             s[i] = s[i].toLowerCase().trim();
         }
 
-        server.sucheVornamen(s); //TODO: Was passier bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
+        server.sucheVornamen(s); //TODO: Was passiert bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
     }
 }

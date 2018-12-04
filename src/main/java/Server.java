@@ -29,6 +29,7 @@ public class Server implements Namenssuche {
      * @param nachnamen
      * @return
      */
+    @Override
     public VornamensZuordnung[] sucheVornamen(String[] nachnamen){
         ServerValidator.pruefeAnzahlNachnamen(nachnamen.length <= ANZAHL_NACHNAMEN);
 
@@ -43,8 +44,6 @@ public class Server implements Namenssuche {
             ArrayList<String> passendeVornamen = namensHashMap.get(nachnamen[i]);
             vornamensZuordnungen[i].setNachname(nachnamen[i]);
             vornamensZuordnungen[i].setVornamen(passendeVornamen.toArray(array));
-
-            System.out.println(vornamensZuordnungen[i]);
         }
 
         return vornamensZuordnungen;
