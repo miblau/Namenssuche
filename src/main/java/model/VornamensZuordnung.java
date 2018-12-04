@@ -32,9 +32,7 @@ public class VornamensZuordnung {
         StringBuffer ergebnis = new StringBuffer("Nachname: " + nachname + "\t| Vornamen: ");
 
         for(String vorname : vornamen){
-            if(vorname != null){
-                ergebnis.append(vorname + ", ");
-            }
+            ergebnis.append(vorname + ", ");
         }
         ergebnis.deleteCharAt(ergebnis.length()-2);
         return ergebnis.toString();

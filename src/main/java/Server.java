@@ -8,6 +8,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
+ * Stellt Funktionalitaet des Servers zur Verfuegung.
+ * Bei Erzeugung eines neuen Servers wird die Namensliste.csv Zeile fuer Zeile eingelesen und in einer
+ * HashMap gespeichert. Jedes Server-Objekt erhaelt so seine eigene HashMap, auf der es die Vornamen finden kann.
  *
  * @author Michelle Blau
  */
@@ -15,18 +18,24 @@ import java.util.regex.Pattern;
 public class Server implements Namenssuche {
 
     private static final int ANZAHL_NACHNAMEN = 10;
-    private static final int ANZAHL_VORNAMENSZUORDNUNGEN = 50;
 
-    HashMap<String, ArrayList<String>> namensHashMap = new HashMap<String, ArrayList<String>>();
 
+    private HashMap<String, ArrayList<String>> namensHashMap = new HashMap<String, ArrayList<String>>();
+
+    /**
+     * Liest bei Erzeugung eines neuen Objekts
+     * die Namensliste.csv in die "namensHashMap" ein.
+     */
     public Server(){
         listeInHashMapEinlesen();
     }
 
 
     /**
+     * Sucht zu gegebenen Nachnamen die zugehörigen Vornamen und gibt diese in einer ArrayList zurueck.
+     * Die Nachnamen werden vorher in Kleinbuchstaben konvertiert.
      *
-     * @param nachnamen
+     * @param nachnamen Arraylaenge muss <= 10 sein, ansonsten wird eine zuVieleNachnamenException geworfen
      * @return
      */
     @Override
@@ -46,7 +55,12 @@ public class Server implements Namenssuche {
     }
 
 
-
+    /**
+     * Liest die Inhalte der Namensliste.csv ein und speichert sie in dem Attribut "namensHashMap".
+     * Dabei wird die erste Zeile uebersprungen.
+     * Key=Nachname, Value=Liste mit zugehoerigen Vornamen
+     *
+     */
     private void listeInHashMapEinlesen(){
         Scanner scanner = null;
         File file = new File(Konstanten.DATEINAME_NAMENSLISTE);
@@ -57,13 +71,10 @@ public class Server implements Namenssuche {
         }
 
         scanner.useDelimiter(Pattern.compile(";"));
-        String vorname = null;
-        String nachname = null;
-
         scanner.nextLine();
         while(scanner.hasNext()){
-            nachname = scanner.next().toLowerCase();
-            vorname = scanner.next().toLowerCase();
+            String nachname = scanner.next().toLowerCase();
+            String vorname = scanner.next().toLowerCase();
 
             if(namensHashMap.containsKey(nachname)){
                 ArrayList<String> bestehendeVornamen = namensHashMap.get(nachname);
@@ -75,11 +86,14 @@ public class Server implements Namenssuche {
             }
             scanner.nextLine();
         }
-
         scanner.close();
     }
 
 
+    /**
+     * Hilfsmethode, die uebergebene Nachnamen in Kleinbuchstaben umwandelt und Whitespace entfernt.
+     * @param nachnamen Umzuwandelnde Nachnamen
+     */
     private void konvertiereInKleinbuchstaben(String[] nachnamen){
         for(int i = 0; i < nachnamen.length; i++){
             nachnamen[i] = nachnamen[i].toLowerCase().trim();
