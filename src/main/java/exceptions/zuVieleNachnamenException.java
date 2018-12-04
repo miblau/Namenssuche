@@ -1,6 +1,7 @@
 package exceptions;
 
 /**
+ * Diese Exception soll geworfen werden, wenn der Client zu viele Nachnamen an den Server schickt.
  *
  * @author Michelle Blau
  */

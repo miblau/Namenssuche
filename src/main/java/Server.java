@@ -35,7 +35,7 @@ public class Server implements Namenssuche {
      * Sucht zu gegebenen Nachnamen die zugehörigen Vornamen und gibt diese in einer ArrayList zurueck.
      * Die Nachnamen werden vorher in Kleinbuchstaben konvertiert.
      *
-     * @param nachnamen Arraylaenge muss <= 10 sein, ansonsten wird eine zuVieleNachnamenException geworfen
+     * @param nachnamen Arraylaenge muss <= 10 sein, ansonsten wird eine "zuVieleNachnamenException" geworfen
      * @return
      */
     @Override
@@ -57,7 +57,7 @@ public class Server implements Namenssuche {
 
     /**
      * Liest die Inhalte der Namensliste.csv ein und speichert sie in dem Attribut "namensHashMap".
-     * Dabei wird die erste Zeile uebersprungen.
+     * Dabei wird die erste Zeile der Datei uebersprungen.
      * Key=Nachname, Value=Liste mit zugehoerigen Vornamen
      *
      */

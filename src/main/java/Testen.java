@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * Klasse zum Testen von Code, kann zu einem spaeteren Zeitpunkt entfernt werden
  *
  */
 

@@ -2,6 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Dient als Container-Klasse.
+ * Ordnet einem Nachnamen ein oder mehrere Vornamen zu.
+ *
+ * @author Michelle Blau
+ */
+
 public class VornamensZuordnung {
     private String nachname;
     private ArrayList<String> vornamen;
