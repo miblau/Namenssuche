@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+
 /**
  * Stellt Funktionalitaet des Servers zur Verfuegung.
  * Bei Erzeugung eines neuen Servers wird die Namensliste.csv Zeile fuer Zeile eingelesen und in einer
