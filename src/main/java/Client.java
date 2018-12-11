@@ -94,7 +94,7 @@ public class Client {
 
             if(vz.getVornamen() != null){
                 for(String vorname : vz.getVornamen()){
-                    vornamen.append(vorname + ", ");
+                    vornamen.append(vorname).append(", ");
                 }
                 vornamen.deleteCharAt(vornamen.length() - 2);
             }
