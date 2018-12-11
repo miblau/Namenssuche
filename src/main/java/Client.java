@@ -6,6 +6,18 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Stellt den Client zur Verfuegung.
+ *
+ * Es wird eine Verbindung zu einem Namenssuche-Programm auf einem
+ * remote-host hergestellt.
+ *
+ * Die Eingabe des Nutzers wird in einem Dialog eingelesen.
+ * Das Ergebnis wird formatiert und ausgegeben.
+ *
+ * @author Johannes Gerwert
+ * @version 11.12.2018
+ */
 public class Client {
 
     private Scanner input = new Scanner(System.in);
@@ -68,11 +80,28 @@ public class Client {
      */
     public void vornamenAusgeben(String[] nachnamenArray, Namenssuche stub) throws IOException{
         ArrayList<VornamensZuordnung> ergebnis;
+        StringBuilder vornamen;
 
         ergebnis = stub.sucheVornamen(nachnamenArray);
 
-        for(VornamensZuordnung vz : ergebnis){
-            System.out.println(vz);
+        System.out.printf("%-15s|%-50s", "Nachname:", "Vornamen:");
+        System.out.println();
+
+
+        for (VornamensZuordnung vz : ergebnis) {
+
+            vornamen = new StringBuilder();
+
+            if(vz.getVornamen() != null){
+                for(String vorname : vz.getVornamen()){
+                    vornamen.append(vorname + ", ");
+                }
+                vornamen.deleteCharAt(vornamen.length() - 2);
+            }
+
+            System.out.printf("%-15s|%-50s", vz.getNachname(), vornamen);
+            System.out.println();
+
         }
 
     }
@@ -97,29 +126,6 @@ public class Client {
         }
 
         return ende;
-    }
-
-    /**
-     * Überprüfung, ob Verbindung funktioniert
-     *
-     * @param stub Die Schnittstelle zum Server wird entgegengenommen
-     */
-    public void verbindungsTest(Namenssuche stub){
-        //TODO: entfernen
-        try {
-            System.out.println("Hallo Verteilte Systeme!");
-
-            String[] s = {"pOtter", "WeAslEy", "GrangER", "Granger         "};
-            //TODO: Was passiert bei Übergabe eines nicht vorhandenen Nachnamens? Wie behandeln?
-            ArrayList<VornamensZuordnung> ergebnis = stub.sucheVornamen(s);
-
-            for(VornamensZuordnung vz : ergebnis){
-                System.out.println(vz);
-            }
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     /**
