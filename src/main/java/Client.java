@@ -92,7 +92,7 @@ public class Client {
 
         endePruefen = input.nextLine();
 
-        if(endePruefen.trim().toLowerCase().equals("n")){
+        if(!endePruefen.trim().toLowerCase().equals("j")){
             ende = true;
         }
 
@@ -134,7 +134,7 @@ public class Client {
         try {
             //Verbindungsaufbau
             Registry registry =
-                    LocateRegistry.getRegistry(host, 42424);
+                    LocateRegistry.getRegistry(host, Konstanten.REGISTRY_PORT);
 
             //Schnittstelle auf Server wird gesucht
             Namenssuche stub = (Namenssuche) registry.lookup("Namenssuche");

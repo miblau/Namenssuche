@@ -39,10 +39,12 @@ public class VornamensZuordnung implements Serializable {
     public String toString() {
         StringBuffer ergebnis = new StringBuffer("Nachname: " + nachname + "\t| Vornamen: ");
 
-        for(String vorname : vornamen){
-            ergebnis.append(vorname + ", ");
+        if(vornamen != null) {
+            for (String vorname : vornamen) {
+                ergebnis.append(vorname + ", ");
+            }
+            ergebnis.deleteCharAt(ergebnis.length() - 2);
         }
-        ergebnis.deleteCharAt(ergebnis.length()-2);
         return ergebnis.toString();
     }
 }

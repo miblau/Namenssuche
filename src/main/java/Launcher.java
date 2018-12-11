@@ -2,6 +2,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+
+//TODO KOMMENTARE
 public class Launcher {
 
     public static void main(String[] args){
@@ -9,8 +11,8 @@ public class Launcher {
            Server server = new Server();
            Namenssuche stub = (Namenssuche) UnicastRemoteObject.exportObject(server, 0);
 
-           LocateRegistry.createRegistry(42424);
-           Registry registry = LocateRegistry.getRegistry(42424);
+           LocateRegistry.createRegistry(Konstanten.REGISTRY_PORT);
+           Registry registry = LocateRegistry.getRegistry(Konstanten.REGISTRY_PORT);
            registry.bind("Namenssuche", stub);
 
        }catch(Exception e){
