@@ -2,8 +2,11 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-
-//TODO KOMMENTARE
+/**
+ * Dient zum Starten des RMI-Servers
+ *
+ * @author Michelle Blau
+ */
 public class Launcher {
 
     public static void main(String[] args){

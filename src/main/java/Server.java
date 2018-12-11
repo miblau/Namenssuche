@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 
 /**
  * Stellt Funktionalitaet des Servers zur Verfuegung.
- * Bei Erzeugung eines neuen Servers wird die Namensliste.csv Zeile fuer Zeile eingelesen und in einer
- * HashMap gespeichert. Jedes Server-Objekt erhaelt so seine eigene HashMap, auf der es die Vornamen finden kann.
+ * Bei Erzeugung eines neuen Servers wird die Namensliste.csv eingelesen und in einer
+ * HashMap gespeichert.
  *
  * @author Michelle Blau
  */
